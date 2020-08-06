@@ -1,0 +1,26 @@
+<div class="hero-section">
+    <div class="hero-caption">We deliver your food at your door.</div>
+</div>
+
+<div class="what">
+    <p id="section-title">What is FoodWay?</p>
+    <div class="def">
+ <p class="foodway-def">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt numquam quasi veniam reiciendis suscipit in necessitatibus inventore aliquam. Atque cupiditate autem incidunt tempora, esse minus. Nobis tempora quidem enim placeat.
+    </p>
+    </div>
+</div>
+<br>
+<hr>
+<div class="top-meals">
+    <div id="section-title" class="meal-title">Our Top Meals</div>
+    <div class="products">
+    {{#each topmeals}}
+    <div class="top-meal" style="width: 300px; margin-left: auto; margin-right: auto;">  
+        <img src="/img/{{this.imagePath}}" class="item-img">
+        <p class="item-name">{{this.item}}</p>
+        <p class="item-desc">{{this.discription}}</p>
+        <p class="item-price">{{this.price}}</p>
+    </div>
+    {{/each}}
+    </div>
+</div>

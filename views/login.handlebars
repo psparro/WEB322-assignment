@@ -1,0 +1,29 @@
+<div class="log-in-hero">
+    <div class="log-in-hero-caption">Log In </div>
+</div>
+
+<hr>
+
+<div class="login-container">
+    <img src="/img/user.png" alt="user" class="user">
+
+    <h1 class="login-title">Login Here</h1>
+
+    {{#each errorMessages}}
+    <div class="errorMessage">{{this}}</div>
+    {{/each}}
+
+    <form id="form" action="/log-in" method="POST">
+        <p class="t">Username</p>
+        {{!-- <span class="error"><p id="userId_error">Error</p></span> --}}
+        <input type="text" class="inputbox" id="username" name="username" placeholder="Enter Username">
+        
+        <p class="t">Password</p>
+        {{!-- <span class="error"><p id="password_error">Error</p></span> --}}
+        <input type="password" class="inputbox" name="password" id="password" placeholder="Password">                
+        
+        <input type="submit" class="login-button" value="Login">
+        <a href="/register">Don't have an account?</a>
+    </form>
+</div>
+

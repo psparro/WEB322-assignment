@@ -1,0 +1,74 @@
+<div class="meal-package-hero">
+    <div class="meal-package-hero-caption">Our Meal Packages</div>
+</div>
+
+<div class="what">
+    <p id="section-title">All meals in one place!</p>
+    </div>
+
+<hr>
+<br>
+<div class="top-meals">
+    <div id="section-title" class="meal-title">Picked up from SubWay</div>
+    <div class="products">
+    {{#each subway}}
+    <div class="top-meal" style="width: 300px; margin-left: auto; margin-right: auto;">  
+        <img src="/img/{{this.imagePath}}" class="item-img">
+        <p class="item-name">{{this.item}}</p>
+        <p class="item-desc">{{this.discription}}</p>
+        <p class="item-price">{{this.price}}</p>
+    </div>
+    {{/each}}
+    </div>
+</div>
+
+<br>
+<hr>
+<br>
+<div class="top-meals">
+    <div id="section-title" class="meal-title">Picked up from Bar Burrito</div>
+    <div class="products">
+    {{#each burrito}}
+    <div class="top-meal" style="width: 300px; margin-left: auto; margin-right: auto;">  
+        <img src="/img/{{this.imagePath}}" class="item-img">
+        <p class="item-name">{{this.item}}</p>
+        <p class="item-desc">{{this.discription}}</p>
+        <p class="item-price">{{this.price}}</p>
+    </div>
+    {{/each}}
+    </div>
+</div>
+
+<br>
+<hr>
+<br>
+<div class="top-meals">
+    <div id="section-title" class="meal-title">Picked up from Taco Bell</div>
+    <div class="products">
+    {{#each tacos}}
+    <div class="top-meal" style="width: 300px; margin-left: auto; margin-right: auto;">  
+        <img src="/img/{{this.imagePath}}" class="item-img">
+        <p class="item-name">{{this.item}}</p>
+        <p class="item-desc">{{this.discription}}</p>
+        <p class="item-price">{{this.price}}</p>
+    </div>
+    {{/each}}
+    </div>
+</div>
+
+<br>
+<hr>
+<br>
+<div class="top-meals">
+    <div id="section-title" class="meal-title">Picked up from KFC</div>
+    <div class="products">
+    {{#each kfc}}
+    <div class="top-meal" style="width: 300px; margin-left: auto; margin-right: auto;">  
+        <img src="/img/{{this.imagePath}}" class="item-img">
+        <p class="item-name">{{this.item}}</p>
+        <p class="item-desc">{{this.discription}}</p>
+        <p class="item-price">{{this.price}}</p>
+    </div>
+    {{/each}}
+    </div>
+</div>

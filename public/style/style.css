@@ -1,0 +1,314 @@
+*{
+    font-family: 'Century Gothic';
+    list-style: none;
+}
+
+/*body{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative; 
+}*/
+
+.nav{
+    width: 100%; 
+    height: 95px;
+}
+
+.logo{
+    width: 400px;
+    height: 91px;
+}
+
+.logodiv{
+    float: left;
+}
+
+.menu{
+    float: right;
+    height: 91px;
+}
+
+.m-button{
+    text-decoration: none;
+    color: #3addbe;
+    font-size: 25px;
+    border: 2px solid;
+    padding: 12px;
+    font-weight: bold;
+}
+
+.m-button:hover{
+    color: black;
+    background-color: #e3fffa;
+}
+
+.menu ul li{
+display: inline;
+padding: 5px;
+}
+
+footer{
+    height: 150px;
+    width: 100%;
+
+}
+
+footer div ul{
+    padding: 0;
+}
+
+.footer-title{
+    font-size: 25px;
+    color: #3addbe;
+}
+
+.footer-i{
+    font-size: 19px;
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+}
+
+.footer-i:hover{
+    color: #3addbe;
+}
+
+.f-help{
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+.f-menu{
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+.f-support{
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+.hr{
+    color: #3addbe;
+}
+
+.copyright{
+    clear: both;
+}
+
+.cpy{
+    width: 100%;
+    text-align: center;
+    color: #3addbe;
+
+}
+
+.hero-section{
+    background-image: url(../img/hero-section.jpg);
+    height: 500px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meal-package-hero{
+    background-image: url(../img/2.jpg);
+    height: 500px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-in-hero{
+    background-image: url(../img/4.jpg);
+    height: 500px;
+    background-repeat:no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+
+.hero-caption{
+    color: white;
+    font-size: 55px;
+    clear: both;
+}
+
+.meal-package-hero-caption{
+    color: white;
+    font-size: 75px;
+}
+
+.log-in-hero-caption{
+    color: white;
+    font-size: 85px;
+}
+
+#pack-button{
+    clear: both;
+}
+
+.what{
+    width: 100%;
+    align-items: center;
+}
+
+#section-title{
+    width: 100%;
+    font-size: 40px;
+    color: #3addbe;
+    text-align: center;
+}
+
+.meal-title{
+    line-height: 100px;
+}
+
+.def{
+    width: 100%;
+}
+
+.foodway-def{
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    font-size: 25px;
+    line-height: 35px;
+}
+
+.products{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    max-width: 100%;   
+    flex-wrap: wrap; 
+}
+
+.top-meals{
+    width: 95%;
+    border: 1px solid;
+    margin: auto;
+}
+
+.item-img{
+    height: 200px;
+    width: 300px;
+    cursor: pointer;
+}
+
+.item-name{
+    font-size: 20px;
+    color: #3addbe;
+    margin: auto;
+    text-align: center;
+}
+
+.item-name, .item-desc, .item-price{
+    text-align: center;
+}
+
+.login-container
+{
+    width: 400px;
+    margin: 30px auto 30px auto;
+    background: #000000;
+    color: white;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0px 30px;
+    padding-bottom: 20px;
+}
+
+.signup-container
+{
+    width: 400px;
+    height: 650px;
+    margin: 30px auto 30px auto;
+    background: #000000;
+    color: white;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0px 30px;
+}
+
+.user
+{
+    height: 100px;
+    width: 100px;
+    padding: 15px;
+    display: block;
+    margin: auto;
+}
+
+.login-title, .signup-title{
+    margin: 0em;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.login-container .t, .signup-container .t{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.login-container input, .signup-container input{
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.inputbox{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.login-button, .signup-button{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #3addbe;
+    color: black;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.login-button:hover, .signup-button:hover{
+    font-size: 20px;
+}
+
+.login-container a, .signup-container a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+}
+
+.login-container a:hover, .signup-container a:hover{
+    color: #3addbe;
+}
+
+.error p{
+    visibility: hidden;
+    font-size: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.dashboard{
+    font-size: 30px;
+}
