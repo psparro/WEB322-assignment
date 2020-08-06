@@ -123,10 +123,32 @@ app.post("/register-validator", (req,res)=>{
     }
 
     else{
+        // using Twilio SendGrid's v3 Node.js Library
+        // https://github.com/sendgrid/sendgrid-nodejs
+
+        const {f_name, l_name, email} = req.body
+
+        const sgMail = require('@sendgrid/mail');
+
+        sgMail.setApiKey("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");
         
-    }
-    
-})
+        const msg = {
+          to: `${email}`,
+          from: 'pp944850@gmail.com',
+          subject: 'Welcome to FoodWay!',
+          html: `<bold>Hello ${f_name} ${l_name}</bold>
+          <br>
+          <h3>You are signed up.</h3>`,
+        };
+        sgMail.send(msg)
+        .then(() => {
+            res.redirect("dashboard");
+        })
+        .catch(err => {
+            console.log(`Error: ${err}`);
+        });
+    }   
+});
 
  app.get("/register", (req,res)=>{
     res.render("register",{
