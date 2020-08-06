@@ -44,16 +44,15 @@ app.get("/", (req, res)=>{
  });
 
  app.post('/log-in',(req,res)=>{
-    //console.log(req.body)
 
     const errors = [];
     
     
     if(req.body.username == ""){
-      errors.push("You must enter Username");
+      errors.push({u_error: "You must enter Username"});
     }
     if(req.body.password==""){
-        errors.push("You must enter a password");
+        errors.push({p_error: "You must enter a password"});
     }
 
     //if user failed validation
@@ -84,6 +83,50 @@ app.get("/", (req, res)=>{
         res.redirect("/dashboard")
     }
 });
+
+app.post("/register-validator", (req,res)=>{
+    const r_error = [];
+
+    if(req.body.f_name == "")
+    {
+        r_error.push({fname: `This field must be filed.`})
+    }
+
+    if(req.body.l_name == "")
+    {
+        r_error.push({lname: `This field must be filled.`})
+    }
+
+    if(req.body.email == "")
+    {
+        r_error.push({emaile: `This field must be filled.`})
+    }
+
+    const regular_exp=/^[a-zA-Z0-9._-]+@[a-z.-]+\.[a-z]{2-5}$/;
+    if(req.body.email.match(regular_exp)){
+        r_error.push({emaile:"Enter a valid Email address."})
+    } 
+
+    if(req.body.password=="") {
+        r_error.push({epassword:"Password can't be blank ."})
+    } 
+    
+    else if(req.body.password.length < 6 || req.body.password.length > 12) {
+        r_error.push({epassword:"Password Must be 6 to 12 char long"})
+    }
+
+    if(r_error.length > 0) {
+        res.render("register",{
+            title: "sign up",
+            errorMessages: r_error
+        })
+    }
+
+    else{
+        
+    }
+    
+})
 
  app.get("/register", (req,res)=>{
     res.render("register",{

@@ -8,15 +8,15 @@
     <img src="/img/user.png" alt="user" class="user">
 
     <h1 class="signup-title">Signup Here</h1>
-    <form action="">
+    <form action="/register-validato" method="POST">
         <p class="t">First Name</p>
-        <input type="text" class="inputbox" placeholder="First Name">
+        <input type="text" class="inputbox" name="f_name" placeholder="First Name">
         <p class="t">Last Name</p>
-        <input type="text" class="inputbox" placeholder="Last Name">
+        <input type="text" class="inputbox" name="l_name" placeholder="Last Name">
         <p class="t">Email</p>
-        <input type="text" class="inputbox" placeholder="Enter Email">
+        <input type="text" class="inputbox" name="email" placeholder="Enter Email">
         <p class="t">Password</p>
-        <input type="password" class="inputbox" placeholder="Password">
+        <input type="password" class="inputbox" name="password" placeholder="Password">
         <input type="submit" class="signup-button" value="Sign Me Up">
     </form>
 </div>

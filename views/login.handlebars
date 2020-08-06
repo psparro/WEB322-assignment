@@ -9,16 +9,20 @@
 
     <h1 class="login-title">Login Here</h1>
 
-    {{#each errorMessages}}
-    <div class="errorMessage">{{this}}</div>
-    {{/each}}
+   
 
     <form id="form" action="/log-in" method="POST">
         <p class="t">Username</p>
+         {{#each errorMessages}}
+    <div class="errorMessage">{{this.u_error}}</div>
+    {{/each}}
         {{!-- <span class="error"><p id="userId_error">Error</p></span> --}}
         <input type="text" class="inputbox" id="username" name="username" placeholder="Enter Username">
         
         <p class="t">Password</p>
+        {{#each errorMessages}}
+    <div class="errorMessage">{{this.p_error}}</div>
+    {{/each}}
         {{!-- <span class="error"><p id="password_error">Error</p></span> --}}
         <input type="password" class="inputbox" name="password" id="password" placeholder="Password">                
         
