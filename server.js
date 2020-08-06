@@ -66,7 +66,7 @@ app.get("/", (req, res)=>{
 
     else{
 
-        const accountSid = 'AC028b8838a4be042691df69f2def34155';
+       /* const accountSid = 'AC028b8838a4be042691df69f2def34155';
         const authToken = 'f7ad602aa1539094d3dd60e729189559';
         const client = require('twilio')(accountSid, authToken);
 
@@ -78,7 +78,7 @@ app.get("/", (req, res)=>{
    })
     .then(message => 
         
-        console.log(message.sid));
+        console.log(message.sid));*/
 
         res.redirect("/dashboard")
     }
