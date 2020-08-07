@@ -302,11 +302,10 @@ footer div ul{
     color: #3addbe;
 }
 
-.error p{
-    visibility: hidden;
-    font-size: 10px;
+.errorMessage{
     margin: 0px;
     padding: 0px;
+    color: red;
 }
 
 .dashboard{
