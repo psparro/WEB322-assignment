@@ -2,3 +2,4 @@ aserver.js
 amain.handlebars
 config/keys.env
 node_modules
+config.json
