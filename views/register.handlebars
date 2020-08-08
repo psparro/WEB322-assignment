@@ -12,20 +12,26 @@
         
         <p class="t">First Name</p>
         {{#each errorMessages}}<div class="errorMessage">{{this.fname}}</div>{{/each}}
-        <input type="text" class="inputbox" name="f_name" placeholder="First Name">
+        <input id="input" type="text" class="inputbox" name="f_name" placeholder="First Name">
         
         <p class="t">Last Name</p>
         {{#each errorMessages}}<div class="errorMessage">{{this.lname}}</div>{{/each}}
-        <input type="text" class="inputbox" name="l_name" placeholder="Last Name">
+        <input id="input" type="text" class="inputbox" name="l_name" placeholder="Last Name">
        
         <p class="t">Email</p>
         {{#each errorMessages}}<div class="errorMessage">{{this.emaile}}</div>{{/each}}
-        <input type="text" class="inputbox" name="email" placeholder="Enter Email">
+        <input id="input" type="text" class="inputbox" name="email" placeholder="Enter Email">
       
         <p class="t">Password</p>
         {{#each errorMessages}}<div class="errorMessage">{{this.epassword}}</div>{{/each}}
-        <input type="password" class="inputbox" name="password" placeholder="Password">
+        <div class="errorMessage">{{sameEmailError}}</div>
+        <input id="input" type="password" class="inputbox" name="password" placeholder="Password">
+
+        <input type="checkbox" class="radio" id="emp_radio" name="employee">
+        <label class="t" for="emp_radio">Employee Signup</label>
+        <br>
+        <br>
         
-        <input type="submit" class="signup-button" value="Sign Me Up">
+        <input id="input" type="submit" class="signup-button" value="Sign Me Up">
     </form>
 </div>

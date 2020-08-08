@@ -1,7 +1,9 @@
 const express = require('express')
+const db = require("./db.js");
 const router = express.Router();
 
 const meals = require("../model/database.js");
+const { Message } = require('twilio/lib/twiml/MessagingResponse');
 
 router.get("/", (req, res)=>{
     res.render("home",{
@@ -22,53 +24,6 @@ router.get("/meals", (req, res)=>{
         kfc: meals.getKFC() 
      });
  });
-
- router.get("/log-in", (req,res)=>{
-    res.render("login",{
-        title: "log in",
-    })
-});
-
-router.post('/log-in',(req,res)=>{
-
-   const errors = [];
-   
-   if(req.body.username == ""){
-     errors.push({u_error: "You must enter Username"});
-   }
-   if(req.body.password==""){
-       errors.push({p_error: "You must enter a password"});
-   }
-
-   //if user failed validation
-   if(errors.length > 0)
-   {
-       res.render("login",{
-           title: "log in",
-           errorMessages: errors
-       })
-   }
-
-   else{
-
-      /* const accountSid = 'AC028b8838a4be042691df69f2def34155';
-       const authToken = 'f7ad602aa1539094d3dd60e729189559';
-       const client = require('twilio')(accountSid, authToken);
-
-   client.messages
-   .create({
-       body: `${req.body.password}`,
-       from: '+12085476732',
-       to: `${req.body.username}`
-  })
-   .then(message => 
-       
-       console.log(message.sid));*/
-
-       res.redirect("/dashboard")
-   }
-});
-
 
 router.get("/register", (req,res)=>{
     res.render("register",{
@@ -100,7 +55,7 @@ router.post("/register", (req,res)=>{
     } 
 
     if(req.body.password=="") {
-        r_error.push({epassword:"Password can't be blank ."})
+        r_error.push({epassword:"Password can't be blank."})
     } 
     
     else if(req.body.password.length < 6 || req.body.password.length > 12) {
@@ -115,6 +70,7 @@ router.post("/register", (req,res)=>{
     }
 
     else{
+        db.addUser(req.body).then(()=>{
         // using Twilio SendGrid's v3 Node.js Library
         // https://github.com/sendgrid/sendgrid-nodejs
 
@@ -124,34 +80,50 @@ router.post("/register", (req,res)=>{
 
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
         
+        const html = `<bold><h2>Hello ${f_name} ${l_name}</h2></bold>
+        <br>
+        <h2>You are signed up.          
+        <br>
+        Regards<br>
+        Parth Patel<br>
+        CEO FoodWay
+        </h2>
+        `;
+
         const msg = {
           to: `${email}`,
           from: 'pp944850@gmail.com',
           subject: 'Welcome to FoodWay!',
-          html: `<bold><h2>Hello ${f_name} ${l_name}</h2></bold>
-          <br>
-          <h2>You are signed up.          
-          <br>
-          Regards<br>
-          Parth Patel<br>
-          CEO FoodWay
-          </h2>
-          `,
+          html: html,
         };
         sgMail.send(msg)
         .then(() => {
             res.redirect("dashboard");
         })
         .catch(err => {
-            console.log(`Error: ${err}`);
+            console.log(`Error while post: ${err}`);
         });
-    }   
+        })
+        .catch((err)=>{
+            console.log("Error adding user from post: "+ err);
+            res.render("register", {
+                title: "Register",
+                sameEmailError: "This email has been used."
+            });
+        })
+    } 
 });
 
 router.get("/dashboard", (req,res)=>{
     res.render("dashboard",{
         title: "dashboard",
     })
+});
+
+router.get("/Employee-Dashboard", (req, res) => {
+    res.render("empDashboard", {
+        title: "Dashboard"
+    });
 });
  
 module.exports = router

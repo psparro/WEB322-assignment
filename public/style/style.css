@@ -262,7 +262,7 @@ footer div ul{
     font-weight: bold;
 }
 
-.login-container input, .signup-container input{
+.login-container #input, .signup-container #input{
     width: 100%;
     margin-bottom: 30px;
 }
