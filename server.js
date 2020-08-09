@@ -18,23 +18,19 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 //load controllers
-const dashboardController = require("./controller/dashboard");
 const generalController = require("./controller/general");
-const userController = require("./controller/user");
 
-//map each controller to the app object
+//mapping controller to the app object
 app.use("/", generalController);
-app.use("/db", dashboardController);
-app.use("/user", userController);
 
 //set up a server
 const PORT = process.env.PORT;
 
 app.use(clientSessions({
-    cookieName: "session", // this is the object name that will be added to 'req'
-    secret: "dashboard_secret", // this should be a long un-guessable string.
-    duration: 2 * 60 * 1000, // duration of the session in milliseconds (2 minutes)
-    activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
+    cookieName: "session", 
+    secret: "dashboard_secret", 
+    duration: 2 * 60 * 1000, 
+    activeDuration: 1000 * 60 
   }));
 
   function ensureLogin(req, res, next) {
@@ -51,43 +47,44 @@ app.get("/log-in", (req,res)=>{
     })
 });
 
-app.post('/log-in',(req,res)=>{
-    // const errors = [];
-    //     if(req.body.username == ""){
-    //         errors.push({u_error: "You must enter Username"});
-    //       }
-    //       if(req.body.password==""){
-    //           errors.push({p_error: "You must enter a password"});
-    //       }
-       
-    //       //if user failed validation
-    //       if(errors.length > 0)
-    //       {
-    //           res.render("login",{
-    //               title: "log in",
-    //               errorMessages: errors
-    //           })
-    //       }
-       
-    //       else{
-    //           res.redirect("/dashboard")
-    //       }
+// checking if the user is authenticated
+function ensureLogin(req, res, next) {
+    if (!req.session.user) {
+      res.redirect("/log-in");
+    } else {
+      next();
+    }
+  };
 
+  function ensureEmployee(req, res, next) {
+    if (!req.session.user || !req.session.user.employee) {
+      res.redirect("/log-in");
+    } else {
+      next();
+    }
+  };
+
+app.post('/log-in',(req,res)=>{
     db.checkPassword(req.body)
     .then((inData) => {
+        req.session.user = inData[0];  //logs them in as a user
+    
+        console.log(req.session.user);
 
-        console.log(inData[0]);
-
-        //if(inData[0].employee)
-        //{
-            res.render("/Employee-Dashboard", {
-                title: "Dashboard"
+        if(inData[0].employee)
+        {
+            res.render("empDashboard",{
+                title: "Dashboard",
+                data: req.session.user
             });
-        //}
+        }
 
-       // else{
-        //    res.redirect("/dashboard");
-       // }
+        else{
+            res.render("dashboard",{
+                title: "dashboard",
+                data: req.session.user
+            })
+        }
     })
     .catch((err) => {
         console.log(err);
@@ -95,11 +92,27 @@ app.post('/log-in',(req,res)=>{
             title: "log in",
             loginError: "No match found."
         });
-    });
-    
+    }); 
 });
 
+app.get("/dashboard", ensureLogin, (req,res)=>{
+    res.render("dashboard",{
+        title: "dashboard",
+        data: req.session.user
+    })
+});
 
+app.get("/Employee-Dashboard", ensureLogin, ensureEmployee, (req, res) => {
+    res.render("empDashboard", {
+        title: "Dashboard",
+        data: req.session.user
+    });
+});
+
+app.get("/logout",(req,res)=>{
+    req.session.reset();
+    res.redirect("/log-in");
+  });
 
 //check if database is working or not
 db.initialize()

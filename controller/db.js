@@ -75,9 +75,9 @@ module.exports.addUser = function(data){
     });
 }
 
-module.exports.getUserByEmail = function(value){
+module.exports.getUserByEmail = function(inEmail){
     return new Promise((resolve, reject) => {
-        User.find({email: value})
+        User.find({email: inEmail})
         .exec()
         .then((returnedEmail)=>{
             if(returnedEmail.length != 0)

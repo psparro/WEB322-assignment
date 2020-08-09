@@ -17,7 +17,7 @@
     <div class="errorMessage">{{this.u_error}}</div>
     {{/each}}
         {{!-- <span class="error"><p id="userId_error">Error</p></span> --}}
-        <input id="input" type="text" class="inputbox" id="username" name="username" placeholder="Enter Username">
+        <input id="input" type="text" class="inputbox" id="username" name="email" placeholder="Enter Username">
         
         <p class="t">Password</p>
         {{#each errorMessages}}
@@ -26,11 +26,6 @@
         {{!-- <span class="error"><p id="password_error">Error</p></span> --}}
         <input id="input" type="password" class="inputbox" name="password" id="password" placeholder="Password">                
         
-        <input type="checkbox" class="radio" id="emp_radio" name="employee">
-        <label class="t" for="emp_radio">Employee Login</label>
-        
-        <br>
-        <br>
         <div class="errorMessage">{{loginError}}</div>
         <br>
         <input id="input" type="submit" class="login-button" value="Login">

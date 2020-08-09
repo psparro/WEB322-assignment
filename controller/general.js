@@ -114,16 +114,6 @@ router.post("/register", (req,res)=>{
     } 
 });
 
-router.get("/dashboard", (req,res)=>{
-    res.render("dashboard",{
-        title: "dashboard",
-    })
-});
 
-router.get("/Employee-Dashboard", (req, res) => {
-    res.render("empDashboard", {
-        title: "Dashboard"
-    });
-});
  
 module.exports = router
