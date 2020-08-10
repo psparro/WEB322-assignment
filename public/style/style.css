@@ -23,11 +23,16 @@
 
 .logodiv{
     float: left;
+    margin: 10px;
 }
 
 .menu{
     float: right;
     height: 91px;
+}
+
+.menu ul{
+    margin-top: 35px;
 }
 
 .m-button{
@@ -206,7 +211,7 @@ footer div ul{
 }
 
 .item-name{
-    font-size: 20px;
+    font-size: 23px;
     color: #3addbe;
     margin: auto;
     text-align: center;
@@ -310,4 +315,30 @@ footer div ul{
 
 .dashboard{
     font-size: 30px;
+}
+
+.contentbox{
+    width: 90%;
+    margin: auto;
+}
+
+.login-name p{
+    margin-bottom: 0rem;
+    font-size: 25px;
+}
+
+.logoutbtn{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #3addbe;
+    color: black;
+    font-size: 18px;
+    border-radius: 20px;
+    float: right;
+}
+
+.add-meal-form{
+    width: 80%;
+    margin: auto;
 }

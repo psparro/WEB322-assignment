@@ -1,4 +1,3 @@
-
 const bcrypt = require('bcryptjs');
 // require mongoose and setup the Schema
 const mongoose = require("mongoose");

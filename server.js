@@ -1,8 +1,12 @@
+// https://web322-assignment-pjpatel27.herokuapp.com/
+// https://github.com/psparro/WEB322-assignment
+
 const express = require("express");
 const app = express();
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const db = require("./controller/db.js");
+const mdb = require("./controller/addMeal.js");
 const clientSessions = require("client-sessions");
 
 //load environment variable file
@@ -114,8 +118,20 @@ app.get("/logout",(req,res)=>{
     res.redirect("/log-in");
   });
 
+  app.post("/addMeal", (req, res) => {
+    mdb.addMeal(req.body)
+    .then(() => {
+      res.redirect("/Employee-Dashboard");
+    })
+    .catch((err) => {
+      console.log("Cannot add meal!" + err);
+      res.redirect("/Employee-Dashboard")
+    })
+  });
+
 //check if database is working or not
 db.initialize()
+.then(mdb.initializeMealDB())
 .then(()=>{
     app.listen(PORT, ()=>{
         console.log("Web server is up and running!!!")

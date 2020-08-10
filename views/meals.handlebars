@@ -9,12 +9,13 @@
 <hr>
 <br>
 <div class="top-meals">
-    <div id="section-title" class="meal-title">Picked up from SubWay</div>
+    <div id="section-title" class="meal-title">Food that you are craving for!!</div>
     <div class="products">
-    {{#each subway}}
+    {{#each meals}}
     <div class="top-meal" style="width: 300px; margin-left: auto; margin-right: auto;">  
         <img src="/img/{{this.imagePath}}" class="item-img">
-        <p class="item-name">{{this.item}}</p>
+        <p class="item-name"><b>{{this.item}}</b></p>
+        <p class="item-desc"><b>Picked up from {{this.restaurent}}</b></p>
         <p class="item-desc">{{this.discription}}</p>
         <p class="item-price">{{this.price}}</p>
     </div>

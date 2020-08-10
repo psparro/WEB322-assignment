@@ -1,15 +1,61 @@
-<div class="dashboard">You are on employee dashboard</div>
-
-<div >
+<div class="contentbox">
+<div>
     <div>
-        <p>Logged in as:</p>
-        <div>{{data.f_name}}</div>
-        <div>{{data.l_name}}</div>
-        <div>{{data.email}}</div>
+        <div class="login-name">
+            <form action="/logout" method="GET">
+                <p>{{data.f_name}} {{data.l_name}} 
+                <button id="input" type="submit" class="logoutbtn">Log Out</button>
+                <br>
+                {{data.email}}
+                </p>
+            </form>
+        </div>
     </div>
     <img height="30%" width="30%" src="https://static.scientificamerican.com/sciam/cache/file/00A865C6-9F1F-4412-A9CA2FC329C15F36_source.jpg" alt="secret image">
 </div>
+<form class="add-meal-form" action="/addMeal" method="POST">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Name of Meal</label>
+      <input type="text" class="form-control" id="inputEmail4" name="item">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Number of food items</label>
+      <input type="number" class="form-control" id="inputPassword4" name="foodNo">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Details</label>
+    <input type="text" class="form-control" id="inputAddress" name="discription">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Meal Category</label>
+      <select id="inputState" class="form-control" name="restaurent">
+        <option>SubWay</option>
+        <option>Bar Burrito</option>
+        <option>Taco Bell</option>
+        <option>KFC</option>
 
-<form action="/logout" method="GET">
-<input id="input" type="submit" class="login-button" value="Log Out">
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Price</label>
+      <input type="text" class="form-control" id="inputZip" name="price" placeholder="CAD">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" name="topmeal">
+      <label class="form-check-label" for="gridCheck">
+        Top Meal
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Upload an Image</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Meal</button>
 </form>
+</div>

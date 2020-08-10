@@ -1,9 +1,11 @@
 const express = require('express')
 const db = require("./db.js");
+const mDB = require("./addMeal.js");
 const router = express.Router();
 
 const meals = require("../model/database.js");
 const { Message } = require('twilio/lib/twiml/MessagingResponse');
+const { ModelBuildContext } = require('twilio/lib/rest/autopilot/v1/assistant/modelBuild');
 
 router.get("/", (req, res)=>{
     res.render("home",{
@@ -15,7 +17,7 @@ router.get("/", (req, res)=>{
 
 
 
-router.get("/meals", (req, res)=>{
+/*router.get("/meals", (req, res)=>{
      res.render("meals",{
         title: "All Meals",
         subway: meals.getSubway(),
@@ -23,6 +25,33 @@ router.get("/meals", (req, res)=>{
         tacos: meals.getTaco(),
         kfc: meals.getKFC() 
      });
+ });*/
+
+ router.get("/meals", (req, res) => {
+     if (req.query.item){
+         mDB.fatchMeals(req.query.item)
+         .then((data) => {
+             res.render("meals", {
+                title: "All Meals",
+                meals: (data.length!=0)?data:undefined
+             });
+         })
+         .catch((err) => {
+            res.redirect("/");
+            console.log("failed to render meals: " + err);
+        });
+     }
+
+     else{
+         mDB.allMeals()
+         .then((data) => {
+             res.render("meals", {title: "All Meals", meals: (data.length!=0)?data:undefined})
+         })
+         .catch((err) => {
+            res.redirect("/");
+            console.log("failed to render all meals: " + err);
+         });
+     }
  });
 
 router.get("/register", (req,res)=>{
@@ -113,6 +142,8 @@ router.post("/register", (req,res)=>{
         })
     } 
 });
+
+router.
 
 
  
